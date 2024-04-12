@@ -15,5 +15,10 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
+<<<<<<< HEAD
  
  
+=======
+
+reportWebVitals();
+>>>>>>> 9a8ad9ea4a4693af4fc9dc606744a1f6a3286329
