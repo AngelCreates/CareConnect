@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+
+.herobg{
+  background: url("https://img.freepik.com/free-photo/flat-lay-heart-cardiogram-pills-pink-background-conceptual-minimalism_169016-19211.jpg?t=st=1712948108~exp=1712951708~hmac=c1644dd94421fea1b595b1b8cb2143972f796dceda2d22b801addbd6eb188df6&w=1060");
+}
