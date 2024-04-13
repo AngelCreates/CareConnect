@@ -1,43 +1,25 @@
-.App {
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
   text-align: center;
-}
+  font-size: 18px;
+  background: #fff;
+  /* border-left: 2px; 
+  border-color: #282c34; */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* Center slide text vertically */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-.herobg{
-  background: url("https://img.freepik.com/free-photo/flat-lay-heart-cardiogram-pills-pink-background-conceptual-minimalism_169016-19211.jpg?t=st=1712948108~exp=1712951708~hmac=c1644dd94421fea1b595b1b8cb2143972f796dceda2d22b801addbd6eb188df6&w=1060");
+.herobg {
+  background: url("https://img.freepik.com/free-photo/heart-shape-stethoscope-medical-subjects_23-2150254045.jpg?t=st=1712951471~exp=1712955071~hmac=37b39fe4289664a300884c981d3b9601292c7b5792d0528c7f0e4f09c1caea24&w=1060");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-attachment: fixed; */
 }

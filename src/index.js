@@ -1,24 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {BrowserRouter as Router} from "react-router-dom"; 
-import { Provider } from "react-redux";
-import { store, persistor } from "./redux/store";
-import { PersistGate } from 'redux-persist/integration/react'
-ReactDOM.render(
-  <Router>
- <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
-  </Provider>
-  </Router>,
-  document.getElementById('root')
-);
-<<<<<<< HEAD
- 
- 
-=======
+import "./index.css";
+import App from "./App";
+// import reportWebVitals from "./reportWebVitals";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter } from "react-router-dom";
 
-reportWebVitals();
->>>>>>> 9a8ad9ea4a4693af4fc9dc606744a1f6a3286329
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <BrowserRouter>
+    <App />
+    <Toaster />
+  </BrowserRouter>
+);

@@ -1,58 +1,81 @@
-import React, { useState } from 'react';
+import React from "react";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
-const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+  return (
+    <div className="flex justify-between items-center w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-4 mx-auto">
+      <Link to="/">
+        <img
+          src={logo}
+          alt="Logo"
+          className="h-8 md:h-[4vw] w-auto"
+          loading="lazy"
+        />
+      </Link>
 
-    return (
-        <nav className="bg-red-100 text-gray-700">
-            <div className="max-w-6xl mx-auto px-4">
-                <div className="flex justify-between items-center py-3 md:py-5">
-
-                    <a href="#home" className="text-lg font-bold">
-                       <img src={logo} alt='logo' width={150}/>
-                    </a>
-
-
-                    <div className="md:hidden">
-                        <button
-                            className="text-white focus:outline-none"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        >
-                            <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                                {isMenuOpen ? (
-                                    <path d="M6 18L18 6M6 6l12 12" />
-                                ) : (
-                                    <path d="M4 6h16M4 12h16m-7 6h7" />
-                                )}
-                            </svg>
-                        </button>
-                    </div>
-
-                    {/* Primary Nav */}
-                    <div className={`md:flex items-center space-x-12 ${isMenuOpen ? 'block' : 'hidden'}`}>
-                        <a href="#home" className="block py-2 px-4 text-xl hover:bg-blue-700 md:hover:bg-transparent md:border-0 md:p-0">Home</a>
-                        <a href="#about" className="block py-2 px-4 text-xl hover:bg-blue-700 md:hover:bg-transparent md:border-0 md:p-0">About</a>
-                        <a href="#services" className="block py-2 px-4 text-xl hover:bg-blue-700 md:hover:bg-transparent md:border-0 md:p-0">Services</a>
-                    </div>
-
-                    {/* Emergency button */}
-                    <div>
-                        <button className="hidden md:block px-5 py-2 text-xl bg-white border-red-400 border-4 hover:border-red-700 hover:text-red-700 text-red-400 rounded-xl transition duration-300">
-                            Emergency
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Mobile Emergency Button */}
-            <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-red-500 text-center`}>
-                <button className="w-full py-3 hover:bg-red-600 text-white rounded transition duration-300">
-                    Emergency
-                </button>
-            </div>
+      {/* Responsive Navigation Menu */}
+      <div className="hidden sm:block">
+        <nav>
+          <ul className="flex gap-x-8 text-lg text-red-500">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
         </nav>
-    );
+      </div>
+
+      {/* Hamburger Menu Icon (shown on smaller screens) */}
+      <div className="sm:hidden">
+        {/* Icon component or image can go here */}
+        {/* You can add functionality to toggle a dropdown menu */}
+      </div>
+
+      {/* Responsive Login/Signup/Logout/Dashboard Buttons */}
+      <div className="flex items-center gap-x-4">
+        {!isLoggedIn ? (
+          <>
+            <Link to="/login">
+              <button className="bg-red-500 hover:bg-white hover:text-red-500 text-white py-2 px-4 rounded-md border-2 border-transparent hover:border-red-500 transition-colors duration-200 text-sm sm:text-base">
+                Login
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button className="bg-red-500 hover:bg-white hover:text-red-500 text-white py-2 px-4 rounded-md border-2 border-transparent hover:border-red-500 transition-colors duration-200 text-sm sm:text-base">
+                Sign Up
+              </button>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/">
+              <button
+                onClick={() => {
+                  setIsLoggedIn(false);
+                  toast.success("Logged Out");
+                }}
+                className="bg-red-500 text-white py-2 px-4 rounded-md border border-richblack-700 text-sm sm:text-base"
+              >
+                Log Out
+              </button>
+            </Link>
+            <Link to="/dashboard">
+              <button className="bg-red-500 text-white py-2 px-4 rounded-md border border-richblack-700 text-sm sm:text-base">
+                Dashboard
+              </button>
+            </Link>
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

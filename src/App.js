@@ -1,33 +1,38 @@
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
-import React, { useContext } from "react";
-import { Route, Routes, Switch, Navigate } from "react-router-dom";
-import Login from "./components/Login";
-import Regiser from "./components/Register";
-import Home from "./components/Home";
-
-import { useSelector } from "react-redux";
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
-
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Footer from "./components/Footer";
+import Services from "./components/services";
+import About from "./pages/About";
+import Testimonials from "./components/Testimonials";
 function App() {
-  const { currentUser: user } = useSelector((state) => state.user);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <>
-      <Routes>
+    <div className="App overflow-x-hidden">
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
-        
-        <Route path="/" exact element={user ? <Home /> : <Regiser />} />
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+
         <Route
-          path="/register"
-          element={user ? <Navigate to="/" /> : <Regiser />}
+          path="/login"
+          element={<Login setIsLoggedIn={setIsLoggedIn} />}
         />
-        
+        <Route
+          path="/signup"
+          element={<Signup setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </>
+      <Services />
+      <Footer />
+    </div>
   );
 }
 
