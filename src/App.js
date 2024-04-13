@@ -1,33 +1,27 @@
-
-import React, { useContext } from "react";
-import { Route, Routes, Switch, Navigate } from "react-router-dom";
-import Login from "./components/Login";
-import Regiser from "./components/Register";
-import Home from "./components/Home";
-
-import { useSelector } from "react-redux";
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
+import "./App.css";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const { currentUser: user } = useSelector((state) => state.user);
-
   return (
-    <>
-      <Routes>
-
-        
-        <Route path="/" exact element={user ? <Home /> : <Regiser />} />
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-        <Route
-          path="/register"
-          element={user ? <Navigate to="/" /> : <Regiser />}
-        />
-        
-      </Routes>
-    </>
+    <div className="App">
+      {/* <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header> */}
+      <Navbar />
+      <Home />
+    </div>
   );
 }
 
