@@ -1,4 +1,8 @@
 import "./App.css";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+
+import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
@@ -12,26 +16,24 @@ import Services from "./components/services";
 import About from "./pages/About";
 import Testimonials from "./components/Testimonials";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <div className="App overflow-x-hidden">
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-
-        <Route
-          path="/login"
-          element={<Login setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route
-          path="/signup"
-          element={<Signup setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-      <Services />
-      <Footer />
+    <div className="App">
+      {/* <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header> */}
+      <Navbar />
+      <Home />
     </div>
   );
 }
